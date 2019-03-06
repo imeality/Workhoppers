@@ -27,6 +27,6 @@ export default new Router({
         return import('./views/Admin_dash.vue')
       }
     }
-
+    
   ]
 })

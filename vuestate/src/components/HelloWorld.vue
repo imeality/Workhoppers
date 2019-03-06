@@ -1,16 +1,23 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    
+   <div class="left">
+    <h1>{{title}}</h1>
+  </div>
   </div>
 </template>
 
 <script>
+import {mapState} from 'vuex'
+
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
-  }
+  },
+  computed:mapState([
+    'title'
+  ])
 }
 </script>
 
