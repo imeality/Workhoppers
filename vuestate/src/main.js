@@ -2,12 +2,15 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-
+import AsyncComputed from 'vue-async-computed'
+import ToggleButton from 'vue-js-toggle-button'
+ 
+Vue.use(ToggleButton)
 Vue.config.productionTip = false
-
+Vue.use(AsyncComputed);
 new Vue({
   el:'#app',
-  router,
+  router,ToggleButton,
   store,
   render: function (h) { return h(App) }
 })

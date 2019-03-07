@@ -20,11 +20,19 @@ export default new Router({
       }
     },
     {
-      path: '/Admin_dash',
-      name: 'Admin_dash',
+      path: '/Admin_login',
+      name: 'Admin_login',
       
       component: function () { 
-        return import('./views/Admin_dash.vue')
+        return import('./views/Admin_login.vue')
+      }
+    },
+    {
+      path: '/Admin_dashboard',
+      name: 'Admin_dashboard',
+      
+      component: function () { 
+        return import('./views/Admin_dashboard.vue')
       }
     }
     

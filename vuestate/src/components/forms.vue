@@ -2,17 +2,25 @@
        
   <div class="login-wrapper border border-light">
      <h1>{{mg}}</h1>
-    <form class="form-signin" @submit.prevent="login" action="">
+    <form class="form-signin" @submit.prevent="login">
     
       <h2 class="form-signin-heading">Please sign in</h2>
      
+      <label for="inputname" class="sr-only">name</label>
+     
+      <input v-model="name" type="text" id="inputEmail" class="form-control" placeholder="name" required autofocus>
+     
+      <label for="inputmobile" class="sr-only">mobile</label>
+    
+      <input v-model="mobile" type="text" id="inputmobile" class="form-control" placeholder="mobile" required>
+
       <label for="inputusername" class="sr-only">username</label>
      
       <input v-model="username" type="text" id="inputusername" class="form-control" placeholder="username" required autofocus>
      
-      <label for="inputPassword" class="sr-only">Password</label>
+      <label for="inputpassword" class="sr-only">Password</label>
     
-      <input v-model="password" type="text" id="inputPassword" class="form-control" placeholder="Password" required>
+      <input v-model="password" type="text" id="inputpassword" class="form-control" placeholder="password" required>
     
       <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
               
@@ -26,35 +34,34 @@ export default {
   name: 'Login',
   data () {
     return {
-      username: '',
-      password: ''
-      
+      id:0,
+      name: '',
+      mobile: '',
+      username:'',
+      password:''
     }
   },
   props: {
     mg: String
   },
   methods: {
+
     login () {
-        
-     var Data={
-           username:this.username,
-           password:this.password
-      }
-console.log(Data);
-        
+        var   Data={ name: this.name,     
+                   mobile: this.mobile,
+            username: this.username,
+             password:this.password};
+         console.log(Data);
       http
-          .post("/admin/login",Data)
+          .post("/admin/user/register",Data)
           .then(response=>{
             console.log("success");
-            this.$router.replace(this.$route.redirect || '/Admin_dashboard')
           })
-          .catch(function (error) {
-          console.error(error.response);
-                    });
-      console.log(this.email)
-      console.log(this.password)
       
+      console.log(this.name);
+      console.log(this.mobile);
+       console.log(this.username);
+      console.log(this.password);   
     }
     
   }
