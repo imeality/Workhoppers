@@ -34,7 +34,14 @@ export default new Router({
       component: function () { 
         return import('./views/Admin_dashboard.vue')
       }
+    },
+    {
+      path: '/forms',
+      name: 'forms',
+      
+      component: function () { 
+        return import('@/components/forms.vue')
+      }
     }
-    
   ]
 })

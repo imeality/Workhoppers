@@ -49,9 +49,9 @@ export default {
     login () {
         var   Data={ name: this.name,     
                    mobile: this.mobile,
-            username: this.username,
+             username: this.username,
              password:this.password};
-         console.log(Data);
+             console.log(Data);
       http
           .post("/admin/user/register",Data)
           .then(response=>{
@@ -69,10 +69,9 @@ export default {
 </script>
 
 <style lang="css">
-body {
-  background: #605B56;
+body{
+  text-align:center;
 }
-
 .login-wrapper {
   background: #fff;
   width: 70%;

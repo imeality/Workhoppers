@@ -1,11 +1,9 @@
 <template >
    <div class="Admin_dashboard">
-         
-      <forms/>
-      <toggle-button :value="false"
-               color="#82C7EB"
-               :sync="true"
-               :labels="true"/>
+        
+        <router-link id="extra" to="/forms"><button >Add-User</button></router-link> 
+       
+      
   </div>
 </template>
 
@@ -41,3 +39,8 @@ methods:{
 }
 </script> 
 
+<style>
+button{
+   text-align:center;
+}
+</style>

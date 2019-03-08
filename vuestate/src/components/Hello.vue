@@ -46,8 +46,10 @@ console.log(Data);
       http
           .post("/admin/login",Data)
           .then(response=>{
-            console.log("success");
-            this.$router.replace(this.$route.redirect || '/Admin_dashboard')
+            this.$router.replace(this.$route.redirect || '/Admin_dashboard');
+            console.log(response.data.token);
+            localStorage.setItem('login', response.data.token);
+            console.log(login);
           })
           .catch(function (error) {
           console.error(error.response);
