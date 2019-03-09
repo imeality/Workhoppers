@@ -2,7 +2,7 @@
    <div class="Admin_dashboard">
         
         <router-link id="extra" to="/forms"><button >Add-User</button></router-link> 
-       
+         <button @click='logout'>logout</button> 
       
   </div>
 </template>
@@ -20,11 +20,12 @@ import forms from '@/components/forms.vue'
         isOpen: false
     },
 methods:{
-
-       toggle: function(){
-            this.isOpen = !this.isOpen
-        },
-
+  
+    logout:function(){
+        
+       localStorage.removeItem('login');
+    console.log(dat+"hy"+logout);
+    },
     Hello(){
         if(t)
         {

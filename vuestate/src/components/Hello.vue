@@ -33,8 +33,8 @@ export default {
   },
   props: {
     mg: String
-  },
-  methods: {
+  }, 
+ methods: {
     login () {
         
      var Data={
@@ -46,10 +46,14 @@ console.log(Data);
       http
           .post("/admin/login",Data)
           .then(response=>{
-            this.$router.replace(this.$route.redirect || '/Admin_dashboard');
-            console.log(response.data.token);
-            localStorage.setItem('login', response.data.token);
-            console.log(login);
+          // this.$router.replace(this.$route.redirect || '/Admin_dashboard');
+          console.log(response);
+          console.log(response.data.token);
+          console.log(response.config.xsrfHeaderName);
+           localStorage.setItem('login',response.data.token)
+            var dat= localStorage.getItem('login');
+         console.log("Arpit"+dat);
+       this.$router.push('/Admin_dashboard')
           })
           .catch(function (error) {
           console.error(error.response);
@@ -59,7 +63,7 @@ console.log(Data);
       
     }
     
-  }
+ }
 }
 </script>
 

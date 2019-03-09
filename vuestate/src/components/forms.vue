@@ -2,7 +2,7 @@
        
   <div class="login-wrapper border border-light">
      <h1>{{mg}}</h1>
-    <form class="form-signin" @submit.prevent="login">
+    <form class="form-signin" @submit.prevent="register">
     
       <h2 class="form-signin-heading">Please sign in</h2>
      
@@ -46,16 +46,24 @@ export default {
   },
   methods: {
 
-    login () {
+    register() {
+
+var instance = axios.create({
+  headers: {'X-Custom-Header': 'foobar'}
+});
+
+
         var   Data={ name: this.name,     
                    mobile: this.mobile,
-             username: this.username,
-             password:this.password};
-             console.log(Data);
+                   username: this.username,
+                   password:this.password   };
+           var dat= localStorage.getItem('login');
+              console.log(dat);
       http
-          .post("/admin/user/register",Data)
+          .post("/admin/user/register",Data,instance)
           .then(response=>{
             console.log("success");
+            
           })
       
       console.log(this.name);
@@ -66,6 +74,7 @@ export default {
     
   }
 }
+
 </script>
 
 <style lang="css">
