@@ -50,8 +50,8 @@ console.log(Data);
           console.log(response);
           console.log(response.data.token);
           console.log(response.config.xsrfHeaderName);
-           localStorage.setItem('login',response.data.token)
-            var dat= localStorage.getItem('login');
+           localStorage.setItem('token',response.data.token)
+            var dat= localStorage.getItem('token');
          console.log("Arpit"+dat);
        this.$router.push('/Admin_dashboard')
           })
@@ -60,14 +60,14 @@ console.log(Data);
                     });
       console.log(this.email)
       console.log(this.password)
-      
+      alert("login successfull");
     }
     
  }
 }
 </script>
 
-<style lang="css">
+<!--style lang="css">
 body {
   background: #605B56;
 }
@@ -111,5 +111,5 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
-</style>
+</style!-->
 

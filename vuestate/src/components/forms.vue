@@ -25,20 +25,31 @@
       <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
               
     </form>
+      
+         
   </div>
+  
 </template>
 
 <script>
 import http from "@/api"
+import  axios  from  'axios'
+import {mapState} from 'vuex'
 export default {
   name: 'Login',
+computed:mapState([
+    'p','l'
+  ]),
+
   data () {
     return {
       id:0,
       name: '',
       mobile: '',
       username:'',
-      password:''
+      password:'',
+       token:'',
+       
     }
   },
   props: {
@@ -48,36 +59,48 @@ export default {
 
     register() {
 
-var instance = axios.create({
-  headers: {'X-Custom-Header': 'foobar'}
-});
-
+if(true)
+{
+const token = localStorage.getItem('token')
+console.log(token+"###@Aprit@###") ;
 
         var   Data={ name: this.name,     
                    mobile: this.mobile,
                    username: this.username,
-                   password:this.password   };
-           var dat= localStorage.getItem('login');
-              console.log(dat);
+                   password:this.password,
+                    }
       http
-          .post("/admin/user/register",Data,instance)
+          .post("/admin/user/register",Data,{headers:{'x-access-token':token}})
           .then(response=>{
             console.log("success");
-            
-          })
+            console.log(response.data);
+             localStorage.setItem('Pass_token',response.data);
+             localStorage.setItem('link','/user/update_password/register/');
+           var pass= localStorage.getItem('Pass_token');
+           var link= localStorage.getItem('link');
+           
+               console.log(link+pass);
+                
+ //        console.log(this.name);
+      // console.log(this.mobile);
+      //  console.log(this.username);
+      // console.log(this.password);
+      // console.log(token);
+         //   this.$router.push('/Admin_dashboard')
+        
       
-      console.log(this.name);
-      console.log(this.mobile);
-       console.log(this.username);
-      console.log(this.password);   
-    }
-    
-  }
+          })
+        }
+else{
+  alert("please login again");
+}
+}
+}
 }
 
 </script>
 
-<style lang="css">
+<!--style lang="css">
 body{
   text-align:center;
 }
@@ -120,5 +143,5 @@ body{
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
-</style>
+</style!-->
 

@@ -19,7 +19,7 @@ app .post('/admin/login',function(req,res){
    if(results[0].username==req.body.username &&  results[0].password==req.body.password)
 {
   console.log("1");
-  var token=jwt.sign({id:results},"mykey",{expiresIn:10});
+  var token=jwt.sign({id:results},"mykey",{expiresIn:'24hr'});
   return  res.status(200).send({auth:true,token:token});
  }
   else if(err)
@@ -51,7 +51,7 @@ app .post('/admin/login',function(req,res){
 //
 // app.use(protected)
 
-function hello(req,res,next){
+function Token_checker(req,res,next){
 
   console.log(req.headers['x-access-token']);
  // if(!token)if (!token) return res.status(401).send({ auth: false, message: 'No token provided.' });
@@ -72,7 +72,7 @@ console.log("sSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSs");
 });
 }
 
-app.post('/admin/user/register',hello,function(req,res){
+app.post('/admin/user/register',Token_checker,function(req,res){
   var hashedPassword = bcrypt.hashSync(req.body.password);
   console.log(hashedPassword);
   console.log("11");
@@ -85,33 +85,51 @@ if(err)
 }
     else
  {
-    console.log(results);
+  //  console.log(results);
+
     res.send(hashedPassword);
     }
   });
 });
 
-app.get('/user/update_password/register/:id',function(req,res){
-console.log(req.params.id);
- console.log(req.body.user_id);
+app.post('/admin/reset_password',function(req,res){
+
+ console.log(req.body.pass);
  console.log(req.body.password);
 
-                 let  user=req.body.user_id;
-                 let pass=req.body.password;
-                // let data=[user,pass];
-  var r=config.query('update User set  password=?  WHERE user_id=?',[pass,user],function(err,results){
 
-    if(err)
-    {
-      console.log("error"+err);
-    }
-    else{
-    console.log(results);
-      res.send('results');
-    }
-    });
+                  let  pass=req.body.pass;
+                  let password=req.body.password;
 
+                 // let data=[user,pass];
+ console.log("1");
 
+                 var db='select Pass_token from User where Pass_token=?';
+ console.log("2");
+                      config.query(db,pass,function(err,results){
+                  if(err)
+                 {
+                    console.log("error");
+                  }
+                     else if(results.length!=0)
+                     {
+ console.log("3");
+   var r=config.query('update User set  password=?  WHERE Pass_token=?',[password,pass],function(err,results){
+
+     if(err)
+     {
+       console.log("error"+err);
+     }
+     else{
+     console.log(results);
+       res.send('results');
+     }
+     });
+ }
+ else {
+       console.log("User not register");
+ }
+});
 
 
 /*protected*/});

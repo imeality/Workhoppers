@@ -22,4 +22,4 @@ new Vue({
 // .$mount('#app')
 // https://ypereirareis.github.io/blog/2017/04/25/vuejs-two-way-data-binding-state-management-vuex-strict-mode/
 // https://www.npmjs.com/package/vue-localstorage
-https://kapeli.com/cheat_sheets/Axios.docset/Contents/Resources/Documents/index
+//https://kapeli.com/cheat_sheets/Axios.docset/Contents/Resources/Documents/index

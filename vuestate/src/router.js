@@ -24,13 +24,12 @@ export default new Router({
       name: 'Admin_login',
       
       component: function () { 
-        return import('./views/Admin_login.vue')
-      }
+        return import('./views/Admin_login.vue',)
+      }, meta: { requiresAuth: false }
     },
     {
       path: '/Admin_dashboard',
-      name: 'Admin_dashboard',
-      
+      name: 'Admin_dashboard', 
       component: function () { 
         return import('./views/Admin_dashboard.vue')
       }
@@ -41,6 +40,14 @@ export default new Router({
       
       component: function () { 
         return import('@/components/forms.vue')
+      }
+    },
+    {
+      path: '/resetpassword',
+      name: 'resetpassword',
+      
+      component: function () { 
+        return import('@/components/resetpassword.vue')
       }
     }
   ]

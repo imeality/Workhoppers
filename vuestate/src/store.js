@@ -8,9 +8,11 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
             title:'My Title',
+             p: localStorage.getItem('Pass_token'),
+             l: localStorage.getItem('link'),
             //message:'Admin_Dashboard'
 
-   accessToken:localStorage.getItem('access_token') ||  '',
+   
       currentUser : {}  
              },
   getters:{
