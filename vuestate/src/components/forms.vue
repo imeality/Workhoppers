@@ -25,23 +25,18 @@
       <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
               
     </form>
-      
-         
+ 
   </div>
-  
+       
 </template>
 
 <script>
 import http from "@/api"
 import  axios  from  'axios'
-import {mapState} from 'vuex'
+//import {mapState} from 'vuex'
 export default {
   name: 'Login',
-computed:mapState([
-    'p','l'
-  ]),
-
-  data () {
+    data () {
     return {
       id:0,
       name: '',
@@ -49,7 +44,8 @@ computed:mapState([
       username:'',
       password:'',
        token:'',
-       
+       pass:'',
+       link:''
     }
   },
   props: {
@@ -69,6 +65,7 @@ console.log(token+"###@Aprit@###") ;
                    username: this.username,
                    password:this.password,
                     }
+                    // post("/admin/user/"++"/register/"+
       http
           .post("/admin/user/register",Data,{headers:{'x-access-token':token}})
           .then(response=>{
@@ -80,13 +77,14 @@ console.log(token+"###@Aprit@###") ;
            var link= localStorage.getItem('link');
            
                console.log(link+pass);
+                this.$router.push('resetpassword_dash')
                 
  //        console.log(this.name);
       // console.log(this.mobile);
       //  console.log(this.username);
       // console.log(this.password);
       // console.log(token);
-         //   this.$router.push('/Admin_dashboard')
+        //    this.$router.push('/resetpassword_dash')
         
       
           })
@@ -95,7 +93,12 @@ else{
   alert("please login again");
 }
 }
-}
+},
+
+// computed:mapState([
+//     'p','l'
+//   ]),
+
 }
 
 </script>

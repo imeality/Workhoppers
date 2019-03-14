@@ -49,6 +49,15 @@ export default new Router({
       component: function () { 
         return import('@/components/resetpassword.vue')
       }
+    },
+    {
+      path: '/resetpassword_dash',
+      name: 'resetpassword_dash',
+      
+      component: function () { 
+        return import('@/components/resetpassword_dash.vue')
+      }
     }
   ]
 })
+                                                                                                                                

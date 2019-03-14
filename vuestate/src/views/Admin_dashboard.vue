@@ -3,8 +3,9 @@
         
          <!-- <router-link id="extra" to="/forms"><button >Add-User</button></router-link>  -->
          <button @click='adduser'>Add-User</button>
-         <button @click='resetpassword'>Reset_Password</button>
-         <button @click='logout'>logout</button> 
+         <button @click='logout'>logout</button>
+         <!--button @click='resetpassword'>Reset_Password</button!-->
+          
            
       
   </div>
@@ -13,22 +14,24 @@
 <script>
 // @ is an alias to /src
 import forms from '@/components/forms.vue'
-import resetpassword from '@/components/resetpassword.vue'
+//import resetpassword from '@/components/resetpassword.vue'
  export default {
   name: 'Admin_dashboard',
   components: {
-    resetpassword,forms
+    forms
+    //resetpassword
+    
   },
   data: {
         
     },
 methods:{
   
-resetpassword:function()
-{
-    alert("resetpassword");
-    this.$router.push('/resetpassword');
-},
+// resetpassword:function()
+// {
+//     alert("resetpassword");
+//     this.$router.push('/resetpassword');
+// },
     adduser:function(){
        this.$router.push('/forms');
     },
