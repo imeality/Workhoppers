@@ -1,0 +1,59 @@
+
+{{title}}
+<div id="center">
+    <a routerLink="/page"  ng-click="enabled=!enabled">Preview Page</a>
+       </div>
+<button (click)="toggle()" id="button">
+    {{buttonName}}
+</button>
+<section class="element">
+<ng-container *ngIf="show" >
+    <div style="margin: 0 auto;text-align: left;">
+        <div>
+            <label>URL-Link</label>
+            <div><input type="text" [(ngModel)]="link" [formControl]="url_link"  /></div>
+        </div>
+        <div>
+            <label>Link-Text</label>
+            <div><input  type="text" [formControl]="link_text" /></div></div>
+                  <input type="button" (click)="senddata()" value="Add custom link"/>
+    </div>
+</ng-container>
+</section>
+
+
+<!-- <section id="showbutton">
+<button (click)="showdata()">custom Link show</button>
+
+{{url_link.value}} {{link_text.value}}
+</section> -->
+
+     <!-- <table >      
+<tr *ngFor="let col of hero" >
+<td>{{col.url_link}}</td><td>{{col.link_text}}</td>
+</tr>
+    </table> -->
+<!-- {{hero.url_link}} -->
+
+
+  
+  
+  <!-- <td>{{col.id}}</td> -->
+  <tr><td>
+  <button (click)="tog()" id="button" style="margin-left:365px;">
+        {{button}}
+    </button>
+</td> <td>
+    <button (click)="showdata()">Update Table</button>
+</td>
+    <tr>
+    <section >
+    <ng-container *ngIf="btn" >
+
+            <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)" style="margin-left:144px;">
+                    <div class="example-box" [cdkDragData]="col" *ngFor="let col of hero"  cdkDrag><td>{{col.indexs}}</td><td>{{col.link_text}}</td><td>{{col.url_link}}</td></div>
+                  </div>
+    </ng-container>
+    </section>
+    
+    
